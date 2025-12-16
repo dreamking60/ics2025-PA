@@ -32,70 +32,73 @@ Two ways for vim tutorial:
 Vim is a powerful tool. And there is some userful magic to improve your coding efficiency.
 
 ```bash
-#Vim use `hjkl` to move cursor.
-h #left
-j #down
-k #up
-l #right
-[number]w #move number word forward
-[number]e #move number word end
-0 #to the end of line
-crtrl-g #show current line
-gg #start of file
-G #end of file
-[number]G #jump to number of line of the file
+# --- Cursor Movement ---
+h               # Move left
+j               # Move down
+k               # Move up
+l               # Move right
+0               # Move to the start of the line
+$               # Move to the end of the line
+[number]w       # Move [number] words forward
+[number]e       # Move to the end of [number] words
+gg              # Go to the start of the file
+G               # Go to the end of the file
+[number]G       # Jump to line [number]
+ctrl-g          # Show current line info
 
-e #end of next word
+# --- Editing ---
+i               # Insert before cursor
+a               # Append after cursor
+o               # Open a new line below
+O               # Open a new line above
+r               # Replace character under cursor
+R               # Replace multiple characters
+ce              # Change word (delete word and insert)
+cc              # Change line (delete line and insert)
+cw              # Change word
+c$              # Change to end of line
 
-#Vim edit
-i # insert from cursor
-a # append after cursor
-r # revise on selected character
-R # revise multiple characters
-ce # deletes the word and places you in Insert mode.
-cc # does the same for the whole line.
-# similar for `cw` and `c$`
-:s/[oldword]/[newwold] # change old to new for one time meet
-:s/[oldword]/[newwold]/g # change old to new for all words in the line
-:[number],[number]s/old/new/g    #the line numbers of the range of lines where the substitution is to be done.
-:%s/old/new/g      #to change every occurrence in the whole file.
-:%s/old/new/gc     #to find every occurrence in the whole file, with a prompt whether to substitute or not.
-o #open a line next
-O #open a line pre
+# --- Search and Replace ---
+:s/old/new      # Replace first occurrence of 'old' with 'new' in current line
+:s/old/new/g    # Replace all occurrences in current line
+:#,#s/old/new/g # Replace in range of line numbers
+:%s/old/new/g   # Replace all occurrences in the whole file
+:%s/old/new/gc  # Replace all occurrences with confirmation
 
-#Vim use `d` for delete
-u #undo the last command executed
-U #undo all changes on a line
-crtl-r #undo the undo's
-x #delete one character
-dw #delete one world until next word start
-de #delete to the end of current word
-d$ #delete to the end of current line
-d[number]w #delete number of words
-dd #delete one line
-[number]dd #delete number lines
-p #paste the last deleted things
-y #copy the highlight word
-yy #copy a line
-yw #copy a word
-#Typing ":set xxx" sets the option "xxx".  Some options are:
-'ic' 'ignorecase'       ignore upper/lower case when searching
-'is' 'incsearch'        show partial matches for a search phrase
-'hls' 'hlsearch'        highlight all matching phrases
-You can either use the long or the short option name.
-#Prepend "no" to switch an option off:   :set noic
+# --- Deletion and Undo ---
+x               # Delete one character
+dw              # Delete word
+de              # Delete to end of word
+d$              # Delete to end of line
+dd              # Delete current line
+[number]dd      # Delete [number] lines
+u               # Undo last change
+U               # Undo all changes on line
+ctrl-r          # Redo
 
+# --- Copy and Paste ---
+y               # Copy (yank) selected text
+yy              # Copy current line
+yw              # Copy word
+p               # Paste after cursor
 
-# Vim use `/` to start a search mode
-n # next search result
-N # opposite next search result
-crtl-o # back to place you search start
-crtl-i # move forward to place you have gone
-% # search the other () {} or [] it belongs to 
+# --- Search ---
+/pattern        # Search for 'pattern'
+n               # Next match
+N               # Previous match
+ctrl-o          # Jump back to previous position
+ctrl-i          # Jump forward
+%               # Find matching brace/parenthesis
 
-# Vim use `!` to execute shell command
-![command] # the command can be any shell command
-:w [filename] # write current file with filename to current directory
-v # select line
-:r [filename] # read file
+# --- Settings ---
+:set ic         # Ignore case
+:set is         # Incremental search
+:set hls        # Highlight search
+:set noic       # Disable ignore case
+
+# --- File and Shell ---
+:w [file]       # Write to file
+:r [file]       # Read from file
+:! [cmd]        # Execute shell command
+v               # Visual mode (select text)
 ```
