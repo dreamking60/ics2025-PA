@@ -253,3 +253,36 @@ To debug with NEMU with gdb, run
 ```bash
 make debug
 ```
+
+## PA1
+The purpose of PA is to achieve NEMU. This project is a migration of FCEUX (a white red game machine simulartor) project.
+
+First we need to check if button works correctly. Clone am-kernels (contians test porgram) to test the button status.
+```bash
+cd ics2025
+bash init.sh am-kernels
+
+cd am-kernels/tests/am-tests
+make ARCH=native mainargs=k run
+```
+
+> Improve compoile speed.
+> use `lscpu` to check how many cpu your machine contians. And use `make -j[number]` to select multiple core to compile to increase the compiling spped.
+> Also there are another tool called `ccahe`
+
+Comparison.
+```bash
+                         +---------------------+  +---------------------+
+                         |     Super Mario     |  |    "Hello World"    |
+                         +---------------------+  +---------------------+
+                         |    Simulated NES    |  |      Simulated      |
+                         |       hardware      |  |       hardware      |
++---------------------+  +---------------------+  +---------------------+
+|    "Hello World"    |  |     NES Emulator    |  |        NEMU         |
++---------------------+  +---------------------+  +---------------------+
+|      GNU/Linux      |  |      GNU/Linux      |  |      GNU/Linux      |
++---------------------+  +---------------------+  +---------------------+
+|    Real hardware    |  |    Real hardware    |  |    Real hardware    |
++---------------------+  +---------------------+  +---------------------+
+          (a)                      (b)                     (c)
+```
